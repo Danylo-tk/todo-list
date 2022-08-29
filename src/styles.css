@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #1B1B1B;
+  font-family: "Playfair Display", serif;
+}
+
+.container {
+  text-align: center;
+}
+
+/*Running line*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.marquee {
+  overflow: hidden;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.marquee__inner {
+  display: flex;
+}
+
+.marquee__line {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 10px 15px;
+  min-width: 100%;
+  white-space: nowrap;
+  color: #303030;
+  animation-name: marqueeLine;
+  animation-duration: 80s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes marqueeLine {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/*Main*/
+main {
+  margin-top: 5rem;
+}
+
+.inputArea {
+  width: 30%;
+  margin: auto;
+}
+
+.inputArea input {
+  height: 2rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  background-color: #c7c7c7;
+}
+
+.inputArea input:focus {
+  outline: none;
+}
+
+.inputArea button {
+  padding: 0.8rem 1.3rem;
+  margin: 0rem 0.5rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #edcf55;
+}
+
+main ul {
+  margin-top: 3rem;
+  list-style: none;
+  font-size: 2rem;
+  color: #fff79e;
+}
+
+.todo {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
+}
+
+.todo button {
+  margin: 0 1rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #edcf55;
+}
