@@ -5,6 +5,7 @@ const ulEl = document.getElementById("ulElement");
 addBtn.addEventListener("click", addTask);
 
 function addTask() {
+  inputEl.setAttribute("placeholder", "");
   //in order not to create empty task, we have to check whether input field isn`t empty
   if (inputEl.value !== "") {
     //creating div for li element and 'done task' button
@@ -24,7 +25,7 @@ function addTask() {
 
     inputEl.value = "";
   } else {
-    console.log("Enter smth!");
+    inputEl.setAttribute("placeholder", "* Enter some value!");
   }
 }
 
