@@ -2,6 +2,7 @@ const inputEl = document.getElementById("inputField");
 const addBtn = document.getElementById("submitBtn");
 const ulEl = document.getElementById("ulElement");
 
+window.addEventListener("load", renderTodoListLocal);
 addBtn.addEventListener("click", addTask);
 
 function addTask() {
@@ -15,6 +16,7 @@ function addTask() {
     const liEl = document.createElement("li");
     liEl.innerText = inputEl.value;
     todoDiv.appendChild(liEl);
+    saveTaskLocal(inputEl.value);
 
     const doneBtn = document.createElement("button");
     doneBtn.innerText = "done";
@@ -32,5 +34,55 @@ function addTask() {
 function doneTask(e) {
   const item = e.target; //returns button element itself
   const todo = item.parentElement; //returns whole div element
+  removeTaskLocal(todo);
   todo.remove();
+}
+
+function saveTaskLocal(task) {
+  let todoList;
+  if (localStorage.getItem("todoList") === null) {
+    todoList = [];
+  } else {
+    todoList = JSON.parse(localStorage.getItem("todoList"));
+  }
+
+  todoList.push(task);
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+}
+
+function renderTodoListLocal() {
+  let todoList;
+  if (localStorage.getItem("todoList") === null) {
+    todoList = [];
+  } else {
+    todoList = JSON.parse(localStorage.getItem("todoList"));
+  }
+
+  todoList.forEach((task) => {
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+
+    const liEl = document.createElement("li");
+    liEl.innerText = task;
+    todoDiv.appendChild(liEl);
+
+    const doneBtn = document.createElement("button");
+    doneBtn.innerText = "done";
+    todoDiv.appendChild(doneBtn);
+    doneBtn.addEventListener("click", doneTask);
+
+    ulEl.appendChild(todoDiv);
+  });
+}
+
+function removeTaskLocal(task) {
+  let todoList;
+  if (localStorage.getItem("todoList") === null) {
+    todoList = [];
+  } else {
+    todoList = JSON.parse(localStorage.getItem("todoList"));
+  }
+  const taskIndex = task.children[0].innerText;
+  todoList.splice(todoList.indexOf(taskIndex), 1);
+  localStorage.setItem("todoList", JSON.stringify(todoList));
 }
