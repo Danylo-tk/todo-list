@@ -6,8 +6,17 @@
 }
 
 body {
-  background-color: #1b1b1b;
+  background: linear-gradient(90deg, #2e2020, #1b1b1b, #28272c);
   font-family: "Playfair Display", serif;
+}
+
+/*Light theme*/
+.lightThemeBg {
+  background: linear-gradient(90deg, #f5f5f5, #f8e5e5, #dbdbdb);
+}
+
+.lightThemeText {
+  color: #303030;
 }
 
 /*Running line*/
@@ -61,7 +70,7 @@ main {
   width: 20rem;
   padding: 0 0.5rem;
   border: none;
-  border-radius: 0.3rem;
+  border-radius: 0.1rem;
   font-size: 2rem;
   font-family: "Playfair Display", serif;
   background-color: #c7c7c7;
@@ -72,18 +81,23 @@ main {
 }
 
 .inputArea input::placeholder {
-  color: rgb(189, 51, 51);
+  color: #B22727;
 }
 
 .inputArea button {
   padding: 0 2rem;
-  margin: 0 2rem;
+  margin-left: 0.2rem;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: regular;
   font-family: "Playfair Display", serif;
   border: none;
-  border-radius: 0.3rem;
-  background-color: #edcf55;
+  border-radius: 0.1rem;
+  background-color: #F4E06D;
+}
+
+.inputArea #themeBtn {
+  padding: 0 1rem;
+  background-color: #c7c7c7;
 }
 
 /*Tasks*/
@@ -105,10 +119,10 @@ main ul {
   margin: 0 1rem;
   padding: 0 1rem;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: regular;
   font-family: "Playfair Display", serif;
   text-transform: capitalize;
   border: none;
-  border-radius: 0.3rem;
-  background-color: #edcf55;
+  border-radius: 0.1rem;
+  background-color: #F4E06D;
 }
