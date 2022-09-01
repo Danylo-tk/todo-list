@@ -104,24 +104,36 @@ main {
 main ul {
   margin-top: 3rem;
   list-style: none;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #c7c7c7;
 }
 
+main li {
+  width: 100%;
+  margin: 0 0 0 1rem;
+}
+
+.doneText {
+  text-decoration: line-through;
+  color: #303030;
+}
+
 .todo {
-  margin-top: 1rem;
   display: flex;
-  justify-content: center;
+  margin: auto;
+  width: 31rem;
+  justify-content: space-between;
   text-transform: capitalize;
 }
 
 .todo button {
-  margin: 0 1rem;
-  padding: 0 1rem;
+  margin: auto;
+  height: 2.5rem;
+  padding: 0rem 1rem;
   font-size: 1rem;
   font-weight: regular;
-  font-family: "Playfair Display", serif;
   text-transform: capitalize;
+  font-family: "Playfair Display", serif;
   border: none;
   border-radius: 0.1rem;
   background-color: #F4E06D;

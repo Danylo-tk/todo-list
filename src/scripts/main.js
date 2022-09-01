@@ -14,17 +14,21 @@ function addTask() {
     //creating div for li element and 'done task' button
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
-    
+
+    const doneBox = document.createElement("input");
+    doneBox.setAttribute("type", "checkbox");
+    todoDiv.appendChild(doneBox);
+
     const liEl = document.createElement("li");
     liEl.innerText = inputEl.value;
     todoDiv.appendChild(liEl);
     saveTaskLocal(inputEl.value);
-
-    const doneBtn = document.createElement("button");
-    doneBtn.innerText = "done";
-    todoDiv.appendChild(doneBtn);
-    doneBtn.addEventListener("click", doneTask);
-
+    
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "delete";
+    todoDiv.appendChild(deleteBtn);
+    deleteBtn.addEventListener("click", deleteTask);
+    
     ulEl.appendChild(todoDiv);
 
     inputEl.value = "";
@@ -33,7 +37,7 @@ function addTask() {
   }
 }
 
-function doneTask(e) {
+function deleteTask(e) {
   const item = e.target; //returns button element itself
   const todo = item.parentElement; //returns whole div element
   removeTaskLocal(todo);
@@ -63,15 +67,19 @@ function renderTodoListLocal() {
   todoList.forEach((task) => {
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
-    
+
+    const doneBox = document.createElement("input");
+    doneBox.setAttribute("type", "checkbox");
+    todoDiv.appendChild(doneBox);
+
     const liEl = document.createElement("li");
     liEl.innerText = task;
     todoDiv.appendChild(liEl);
 
-    const doneBtn = document.createElement("button");
-    doneBtn.innerText = "done";
-    todoDiv.appendChild(doneBtn);
-    doneBtn.addEventListener("click", doneTask);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "delete";
+    todoDiv.appendChild(deleteBtn);
+    deleteBtn.addEventListener("click", deleteTask);
 
     ulEl.appendChild(todoDiv);
   });
@@ -84,7 +92,7 @@ function removeTaskLocal(task) {
   } else {
     todoList = JSON.parse(localStorage.getItem("todoList"));
   }
-  const taskIndex = task.children[0].innerText;
+  const taskIndex = task.children[1].innerText;
   todoList.splice(todoList.indexOf(taskIndex), 1);
   localStorage.setItem("todoList", JSON.stringify(todoList));
 }
