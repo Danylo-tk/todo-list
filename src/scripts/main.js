@@ -18,17 +18,19 @@ function addTask() {
     const doneBox = document.createElement("input");
     doneBox.setAttribute("type", "checkbox");
     todoDiv.appendChild(doneBox);
+    doneBox.addEventListener("change", doneTask);
 
     const liEl = document.createElement("li");
     liEl.innerText = inputEl.value;
+    liEl.setAttribute("id", "todoText");
     todoDiv.appendChild(liEl);
     saveTaskLocal(inputEl.value);
-    
+
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "delete";
     todoDiv.appendChild(deleteBtn);
     deleteBtn.addEventListener("click", deleteTask);
-    
+
     ulEl.appendChild(todoDiv);
 
     inputEl.value = "";
@@ -71,9 +73,11 @@ function renderTodoListLocal() {
     const doneBox = document.createElement("input");
     doneBox.setAttribute("type", "checkbox");
     todoDiv.appendChild(doneBox);
+    doneBox.addEventListener("change", doneTask);
 
     const liEl = document.createElement("li");
     liEl.innerText = task;
+    liEl.setAttribute("id", "todoText");
     todoDiv.appendChild(liEl);
 
     const deleteBtn = document.createElement("button");
@@ -115,4 +119,29 @@ function changeTheme() {
       tasks[i].classList.remove("lightThemeText");
     }
   }
+}
+
+function doneTask(e) {
+  const item = e.target; //returns input el itself
+  const todoLi = item.nextSibling; // returns li element
+  
+  if(item.checked) {
+    todoLi.classList.add("doneText");
+  } else {
+    todoLi.classList.remove("doneText")
+  }
+
+  saveDoneTaskLocal(item);
+}
+
+function saveDoneTaskLocal(item) {
+  let state;
+  if (localStorage.getItem("state") === null) {
+    state = '';
+  } else {
+    state = JSON.parse(localStorage.getItem("state"));
+  }
+
+  state = item.checked;
+  console.log(state);
 }
